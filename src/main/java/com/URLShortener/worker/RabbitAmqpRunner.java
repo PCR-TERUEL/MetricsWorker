@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.scheduling.annotation.Scheduled;
 
 public class RabbitAmqpRunner implements CommandLineRunner {
 
@@ -14,12 +15,9 @@ public class RabbitAmqpRunner implements CommandLineRunner {
     private ConfigurableApplicationContext ctx;
 
     @Override
+    @Scheduled
     public void run(String... arg0) throws Exception {
-        while(true) {
-            //System.out.println("Ready ... running for " + duration + "ms");
-            Thread.sleep(duration);
-        }
-        //ctx.close();
-    }
+        Thread.sleep(duration);
 
+    }
 }

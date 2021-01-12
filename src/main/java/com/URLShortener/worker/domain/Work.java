@@ -2,12 +2,9 @@ package com.URLShortener.worker.domain;
 
 import com.URLShortener.worker.repository.ShortURLRepository;
 import com.URLShortener.worker.services.RabbitMQPublisherService;
-import com.URLShortener.worker.services.URLValidatorService;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -31,6 +28,7 @@ public class Work extends Thread{
         {
             Object obj = jsonParser.parse(reader);
             JSONObject message = (JSONObject) obj;
+
             this.idUser = (String) message.get(MetricQueueMessage.ID_USER_FIELD_NAME);
         } catch (IOException | ParseException e) {
             e.printStackTrace();

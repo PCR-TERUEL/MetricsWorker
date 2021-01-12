@@ -32,6 +32,19 @@ public class ShortURLRepository {
     this.jdbc = jdbc;
   }
 
+  public ShortURL save(ShortURL su) {
+    try {
+      jdbc.update("INSERT INTO shorturl VALUES (?,?,?,?,?,?,?,?,?,?)",
+              su.getHash(), su.getTarget(), su.getSponsor(),
+              su.getCreated(), su.getExpiration(), su.getOwner(), su.getMode(), su.getSafe(),
+              su.getIP(), su.getCountry());
+    } catch (Exception e) {
+      return null;
+    }
+    return su;
+  }
+
+
   public List<ShortURL> findByUser(String userId) {
     try {
 
