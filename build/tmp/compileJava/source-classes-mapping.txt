@@ -1,24 +1,22 @@
 com/URLShortener/worker/domain/Metric.java
  com.URLShortener.worker.domain.Metric
-com/URLShortener/worker/services/MetricService.java
- com.URLShortener.worker.services.MetricService
-com/URLShortener/worker/configuration/RabbitSenderConfiguration.java
- com.URLShortener.worker.configuration.RabbitSenderConfiguration
-com/URLShortener/worker/domain/ShortURL.java
- com.URLShortener.worker.domain.ShortURL
-com/URLShortener/worker/MetricWorker.java
- com.URLShortener.worker.MetricWorker
-com/URLShortener/worker/RabbitAmqpRunner.java
- com.URLShortener.worker.RabbitAmqpRunner
-com/URLShortener/worker/domain/MetricQueueMessage.java
- com.URLShortener.worker.domain.MetricQueueMessage
-com/URLShortener/worker/services/RabbitMQPublisherService.java
- com.URLShortener.worker.services.RabbitMQPublisherService
 com/URLShortener/worker/repository/ShortURLRepository.java
  com.URLShortener.worker.repository.ShortURLRepository
-com/URLShortener/worker/domain/Work.java
- com.URLShortener.worker.domain.Work
+com/URLShortener/worker/RabbitAmqpRunner.java
+ com.URLShortener.worker.RabbitAmqpRunner
 com/URLShortener/worker/configuration/RabbitConfig.java
  com.URLShortener.worker.configuration.RabbitConfig
+com/URLShortener/worker/domain/Work.java
+ com.URLShortener.worker.domain.Work
+com/URLShortener/worker/MetricWorker.java
+ com.URLShortener.worker.MetricWorker
+com/URLShortener/worker/services/RabbitMQPublisherService.java
+ com.URLShortener.worker.services.RabbitMQPublisherService
+com/URLShortener/worker/domain/MetricQueueMessage.java
+ com.URLShortener.worker.domain.MetricQueueMessage
 com/URLShortener/worker/RabbitMQListener.java
  com.URLShortener.worker.RabbitMQListener
+com/URLShortener/worker/domain/ShortURL.java
+ com.URLShortener.worker.domain.ShortURL
+com/URLShortener/worker/configuration/RabbitSenderConfiguration.java
+ com.URLShortener.worker.configuration.RabbitSenderConfiguration
