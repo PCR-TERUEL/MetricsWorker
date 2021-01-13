@@ -8,7 +8,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@RabbitListener(queues = RabbitConfig.VALIDATION_JOB_QUEUE_NAME)
+@RabbitListener(queues = RabbitConfig.METRIC_JOB_QUEUE_NAME)
 public class RabbitMQListener {
 
     private final ShortURLRepository shortURLRepository;
