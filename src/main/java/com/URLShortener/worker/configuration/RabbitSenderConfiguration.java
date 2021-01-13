@@ -10,7 +10,7 @@ public class RabbitSenderConfiguration {
 
     @Bean
     public Queue tasks() {
-        return new Queue("metric_resp");
+        return new Queue(RabbitConfig.VALIDATION_RESP_QUEUE_NAME);
     }
     @Bean
     public RabbitMQPublisherService rabbitMQPublisherService(){return new RabbitMQPublisherService();}

@@ -12,9 +12,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class RabbitConfig {
     @Bean
     public Queue metrics() {
-        return new Queue("metric_resp");
+        return new Queue(VALIDATION_RESP_QUEUE_NAME);
     }
 
+    public static final String VALIDATION_JOB_QUEUE_NAME = "metric_job";
+    public static final String VALIDATION_RESP_QUEUE_NAME = "metric_resp";
 
     private final JdbcTemplate jdbc;
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {

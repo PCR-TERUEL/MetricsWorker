@@ -1,3 +1,6 @@
+DROP DATABASE urlshortener_test
+CREATE DATABASE urlshortener_test
+USE urlshortener_test
 CREATE TABLE IF NOT EXISTS role
 (
     ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

@@ -1,5 +1,6 @@
 package com.URLShortener.worker;
 
+import com.URLShortener.worker.configuration.RabbitConfig;
 import com.URLShortener.worker.domain.ShortURL;
 import com.URLShortener.worker.domain.Work;
 import com.URLShortener.worker.repository.ShortURLRepository;
@@ -22,23 +23,16 @@ import java.sql.Date;
 
 
 @SpringBootTest
-@RabbitListener(queues = "validation_resp")
+@RabbitListener(queues = RabbitConfig.VALIDATION_RESP_QUEUE_NAME)
 class MetricsWorkerTests {
 
     @Autowired
     private RabbitTemplate template;
 
-    @Autowired
-    private final RabbitMQPublisherService rabbitMQPublisherService;
-
-
     String resp;
 
     @Autowired
     JdbcTemplate jdbc;
-    MetricsWorkerTests() {
-        rabbitMQPublisherService = new RabbitMQPublisherService();
-    }
 
 
     @Before
@@ -49,12 +43,14 @@ class MetricsWorkerTests {
     void after(){
         resp = "";
     }
+
     @Test
     void getsAnEmptyMetricJob() throws InterruptedException {
-        this.template.convertAndSend("validation_job", "{\"idUser\":\"2\"}");
+
+        this.template.convertAndSend(RabbitConfig.VALIDATION_JOB_QUEUE_NAME, "{\"idUser\":\"1\"}");
         Thread.sleep(1000);
 
-        assert(resp.equals("{\"idUser\":\"2\",\"metrics\":[]}"));
+        assert(resp.equals("{\"idUser\":\"1\",\"metrics\":[]}"));
     }
 
     @Test
@@ -64,7 +60,7 @@ class MetricsWorkerTests {
                 new Date(1), new Date(1), 2L, 1, true, "ip",
                 "country"));
 
-        this.template.convertAndSend("metric_job", "{\"idUser\":\"2\"}");
+        this.template.convertAndSend(RabbitConfig.VALIDATION_JOB_QUEUE_NAME, "{\"idUser\":\"2\"}");
         Thread.sleep(1000);
         assert(resp.equals("{\"idUser\":\"2\",\"metrics\":[{\"valid\":true,\"shortedUrl\":\"09bb6428\",\"clicks\":0,\"url\":\"https:\\/\\/www.live.com\"},{\"valid\":true,\"shortedUrl\":\"hash\",\"clicks\":0,\"url\":\"target\"}]}"));
     }
